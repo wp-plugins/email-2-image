@@ -2,7 +2,7 @@
 /*
 Plugin Name: Email to Image
 Description: Scan comments, pages and post for email addresses and swap them form cool images to avoid spamming email harversting bots with some style. <a href="http://anduriell.es"> Donate and Support Here</a>
-Version: 1
+Version: 1.1
 License: GPL
 Author: Arturo Emilio (Anduriell)
 Author URI: http://anduriell.es
@@ -72,7 +72,7 @@ function em($xxx) {
   return $xxx;
 }
 
-function hexrgb($hexstr, $rgb){ //
+function hexrgb($hexstr, $rgb){ 
  $int = hexdec(str_replace("#", '', $hexstr));
  switch($rgb) {
 		case "r":
@@ -119,8 +119,8 @@ function ima($user,$hst){
 		$font_c = '#ff0000'; 
 		$font_size = '12'; 
 
-		$font_url = ABSPATH . 'wp-content/plugins/andumail/arial.ttf'; 
-                $srcUrl = ABSPATH . 'wp-content/plugins/andumail/'.$hst.'.gif'; 
+		$font_url = ABSPATH . 'wp-content/plugins/email-2-image/arial.ttf'; 
+                $srcUrl = ABSPATH . 'wp-content/plugins/email-2-image/'.$hst.'.gif'; 
 		$htpabs = ABSPATH . 'wp-content/';
 
 		$is_border = 0; 
@@ -156,7 +156,7 @@ function ima($user,$hst){
 
 		if($is_border){
 			$border_color = hexrgb($border_c,rgb); 
-			$border = imagecolorallocate($image, $border_color['r'], $border_color['g'], $border_color['b']); //±ß¿òÑÕÉ«
+			$border = imagecolorallocate($image, $border_color['r'], $border_color['g'], $border_color['b']); 
 			imagerectangle($image, 0, 0, $newWidth - 1, $newHeight - 1, $border); 
 		}
 
@@ -174,11 +174,9 @@ function ima($user,$hst){
                 
 
 		
-		//header("Content-type: image/png");	
 		imagepng($image,$htpabs."chtem/".$fgh.".png"); 
 		imagedestroy($image);
-               // header("location: ?show=".$fgh);
-		return $fgh;
+               return $fgh;
 	}
     
 }

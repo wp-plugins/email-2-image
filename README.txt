@@ -41,17 +41,13 @@ Please, any questions or bug found report to  [Support Page](http://anduriell.es
 Look on the webpage for more screenshots and an example of the working plugin.
 
 == Changelog ==
-<<<<<<< .mine
+
 = 2.0 =
 Added  option menu where you may choose font color and size.
 More minor bugfixes.
 
-=======
 =1.1=
 minor bugfixes.
->>>>>>> .r190573
-= 1.1 =
-Minor bug fixes
 
 = 1.0 =
 First release

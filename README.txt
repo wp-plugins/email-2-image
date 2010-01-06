@@ -41,7 +41,8 @@ Please, any questions or bug found report to  [Support Page](http://anduriell.es
 Look on the webpage for more screenshots and an example of the working plugin.
 
 == Changelog ==
-
+= 2.1 = 
+error de upload in svn repository.
 = 2.0 =
 Added  option menu where you may choose font color and size.
 More minor bugfixes.

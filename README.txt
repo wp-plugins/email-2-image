@@ -11,7 +11,6 @@ This plugin is to avoid spam spiders bot to crawl the email addresses in your bl
 == Description ==
 
 
-
 This plugin is used to prevent spiders collect email addresses of your blog for the sending of spam. There are other plugins that perform a similar function but the vast majority do not work with newer versions of wordpress.
 
 This plugin will convert your pictures to email addresses. Basically it's all happening foulbrood make these attractive to displayed addresses off in some style.
@@ -20,34 +19,40 @@ If the server does not show the address is recognized naturally. Nor are display
 
 The names are encrypted to prevent the spider recognizes them.
 
-For any questions, suggestion or comment or bugs found let me know on the support website: [Support Website](http://anduriell.es)
+If you like to have more options or see a bug please leave a comment in: [Support Website](http://anduriell.es/email2image/)
 
 
 == Installation ==
 To install:
 
-1. Upload `andumail.zip` to the `/wp-content/plugins/` directory
-2. Uncompress it.
-3. Activate the plugin through the 'Plugins' menu in WordPress
-4. That's it!!
+1. Use the wordpress plugin manager to upload the plugin.
+2. Activate it.
+3. There is a new option in Options Menu. There you have to choose a font color and font size. 
+4. Ready to go.
 
 == Frequently Asked Questions ==
-Not yet. For questions it will be on the webpage: [Click Here to go](http://anduriell.es)
+Not yet. For new questions please ask them in the official webpage: [Click Here to go](http://anduriell.es/email2image)
+
 = A question that someone might have =
 
-An answer to that question.
+Please, any questions or bug found report to  [Support Page](http://anduriell.es/email2image)
 == Screenshots ==
 
-Look on the webpage for more screenshots and example of the working plugin.
+Look on the webpage for more screenshots and an example of the working plugin.
 
 == Changelog ==
+<<<<<<< .mine
+= 2.0 =
+Added  option menu where you may choose font color and size.
+More minor bugfixes.
+
+=======
 =1.1=
 minor bugfixes.
+>>>>>>> .r190573
+= 1.1 =
+Minor bug fixes
+
 = 1.0 =
 First release
-
-== Upgrade Notice ==
-
-No upgrades at this moment.
-
 

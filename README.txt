@@ -4,7 +4,7 @@ Donate link: http://anduriell.es/email2image
 Tags: email image, email, spam, image, email spam
 Requires at least: 2.8
 Tested up to: 2.9
-Stable tag: 1.1
+Stable tag: 2.1
 
 This plugin is to avoid spam spiders bot to crawl the email addresses in your blog. Take them  and swap for images.
 

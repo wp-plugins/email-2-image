@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: Arturo Emilio
-Donate link: http://anduriell.es/email2image
+Donate link: http://arturoemilio.es
 Tags: email image, email, spam, image, email spam
 Requires at least: 2.8
 Tested up to: 2.9

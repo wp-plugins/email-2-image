@@ -19,7 +19,7 @@ If the server does not show the address is recognized naturally. Nor are display
 
 The names are encrypted to prevent the spider recognizes them.
 
-If you like to have more options or see a bug please leave a comment in: [Support Website](http://anduriell.es/email2image/)
+If you like to have more options or see a bug please leave a comment in Wordpress Forums
 
 
 == Installation ==
@@ -31,14 +31,13 @@ To install:
 4. Ready to go.
 
 == Frequently Asked Questions ==
-Not yet. For new questions please ask them in the official webpage: [Click Here to go](http://anduriell.es/email2image)
-
+Not yet. For new questions please ask them in Wordpress Forums
 = A question that someone might have =
 
-Please, any questions or bug found report to  [Support Page](http://anduriell.es/email2image)
+Please, any questions or bug found report to  Wordpress Forums
 == Screenshots ==
 
-Look on the webpage for more screenshots and an example of the working plugin.
+
 
 == Changelog ==
 = 2.1 = 

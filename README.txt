@@ -3,7 +3,7 @@ Contributors: Arturo Emilio
 Donate link: http://arturoemilio.es
 Tags: email image, email, spam, image, email spam
 Requires at least: 2.8
-Tested up to: 2.9
+Tested up to: 3.3
 Stable tag: 2.1
 
 This plugin is to avoid spam spiders bot to crawl the email addresses in your blog. Take them  and swap for images.

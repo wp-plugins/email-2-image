@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Email to Image
-Description: Scan comments, pages and post for email addresses and swap them form cool images to avoid spamming email harversting bots with some style. <a href="http://anduriell.es"> Donate and Support Here</a>
+Description: Protect your privacy from spambots using this very nice email addresses encripter. Only for the human eyes! <a href="http://arturoemilio.es/2012/01/email-to-image/"> New features please click HERE</a>
 Version: 3.0
 License: GPL
 Author: Arturo Emilio 

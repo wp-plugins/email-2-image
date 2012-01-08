@@ -68,8 +68,9 @@ minor bugfixes.
 First release
 
 == Upgrade Notice ==
-*[strong]New[/strong] Now will create allways an image. If the email provider is not recognice will create an image with the worditself.
-*Improve responsivnes from the plugin, now is much faster.
-*Improve caching engine, now is compatible with caching plugins.
-*Some minor bugfixes and improvements that i've come accross. 
-*Updated homepage and support pages. Homepage will be online soon, until then you may download and try the plugin.
+* [strong]New[/strong] Now will create allways an image. If the email provider is not recognice will create an image with the word itself.
+* [strong]New[/strong] Added Admin Notice if the plugin is not configured yet.
+* Improve responsivnes from the plugin, now is much faster.
+* Improve caching engine, now is compatible with caching plugins.
+* Some minor bugfixes and improvements that i've come accross. 
+* Updated homepage and support pages. Homepage will be online soon, until then you may download and try the plugin.

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Email to Image
 Description: Scan comments, pages and post for email addresses and swap them form cool images to avoid spamming email harversting bots with some style. <a href="http://anduriell.es"> Donate and Support Here</a>
-Version: 2.1
+Version: 3.0
 License: GPL
 Author: Arturo Emilio 
 Author URI: http://arturoemilio.es
@@ -180,18 +180,18 @@ function ima($user,$hst){
 		$font_url = ABSPATH . 'wp-content/plugins/email-2-image/arial.ttf'; 
                 $srcUrl = ABSPATH . 'wp-content/plugins/email-2-image/'.$hst.'.gif'; 
 		$htpabs = ABSPATH . 'wp-content/';
-		$is_border = ABSPATH . 'wp-content/plugins/email-2-image/at.gif'; 
+		$is_at = ABSPATH . 'wp-content/plugins/email-2-image/at.gif'; 
       		if($hst) $is_logo = 1; else $is_logo=0; 
 		$srcWidth = 0;
 		$srcHeight = 0;
 		if($is_logo){
 			if(!file_exists($srcUrl)){
-			        $at = ABSPATH . 'wp-content/plugins/email-2-image/at1.gif';
+			  $at = ABSPATH . 'wp-content/plugins/email-2-image/at1.gif';
 				$origImg = ImageCreateFromGIF($at);
 				$srcWidth = intval(imagesx($origImg)); 
 				$srcHeight = intval(imagesy($origImg));
-				$ch = file_get_contents($is_border, NULL, NULL,7,200);
-			        $str_pos = imagettfbbox($font_size,0,$font_url,$hurs);
+				$ch = file_get_contents($is_at, NULL, NULL,7,200);
+			  $str_pos = imagettfbbox($font_size,0,$font_url,$hurs);
 				$str_width = intval($str_pos[2]); 
 				$str_height = intval(str_replace("-","",$str_pos[5])); 
 				$newWidth = $str_width + 15 + $srcWidth; 
@@ -226,7 +226,7 @@ function ima($user,$hst){
 		$back_color = hexrgb($back_c,rgb); 
 		$back = imagecolorallocate($image, $back_color['r'], $back_color['g'], $back_color['b']); 
 		imagefilledrectangle($image, 0, 0, $newWidth - 1, $newHeight - 1, $back); 
-		if($is_border){
+		if($is_at){
 			$border_color = hexrgb($border_c,rgb); 
 			$border = imagecolorallocate($image, $border_color['r'], $border_color['g'], $border_color['b']); 
 			imagerectangle($image, 0, 0, $newWidth - 1, $newHeight - 1, $border); 

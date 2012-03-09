@@ -2,7 +2,7 @@
 /*
 Plugin Name: Email to Image
 Description: Protect your privacy from spambots using this very nice email addresses encripter. Only for the human eyes! <a href="http://arturoemilio.es/2012/01/email-to-image/"> New features please click HERE</a>
-Version: 3.0
+Version: 3.1
 License: GPL
 Author: Arturo Emilio 
 Author URI: http://arturoemilio.es
@@ -103,7 +103,7 @@ function opt(){
 define( "ADDR_PATTERN",
         "(?P<email>[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})" );
 function em($xxx) {
-  $xxx = preg_replace("|mailto:".ADDR_PATTERN."|i", '$1', $xxx);
+  $xxx = preg_replace("/mailto:[^\?]".ADDR_PATTERN."(.*)<.*\/a.*>/i", '"$2 </a> $1', $xxx);
   $xxx = preg_replace_callback(
     "/\[([^]]+)]([\s]|&nbsp;)*".ADDR_PATTERN."/i",
     create_function(

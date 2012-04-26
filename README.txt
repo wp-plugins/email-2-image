@@ -3,8 +3,8 @@ Contributors: Arturo Emilio
 Donate link: http://anduriell.es/email2image
 Tags: email image, email, spam, image, email spam
 Requires at least: 2.8
-Tested up to: 3.3.1
-Stable tag: 3.1
+Tested up to: 3.3.2
+Stable tag: 3.2
 
 Avoid to get the email addresses in your blog to be indexed by spambots in a fancy and very efective way.
 
@@ -49,6 +49,8 @@ If you found any bug or see any weird behavior in your blog, please use the word
 You may see the working plugin in my website [Comment about my plugin in my homepage](http://arturoemilio.es/2012/01/email-to-image/).
 
 == Changelog ==
+= 3.2 =
+*Fixed a bug where the plugin couldn't been configured.
 = 3.1 = 
 *Fixed links like a href= "mailto to show first the text and then the image. 
 = 3.0 =

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Email to Image
 Description: Protect your privacy from spambots using this very nice email addresses encripter. Only for the human eyes! <a href="http://arturoemilio.es/2012/01/email-to-image/"> New features please click HERE</a>
-Version: 3.2
+Version: 4.0
 License: GPL
 Author: Arturo Emilio 
 Author URI: http://arturoemilio.es
@@ -136,7 +136,7 @@ function em($xxx) {
   return $xxx;
 }
 
-function hexrgb($hexstr, $rgb){ 
+function hexrgb_em($hexstr, $rgb){ 
  $int = hexdec(str_replace("#", '', $hexstr));
  switch($rgb) {
 		case "r":
@@ -159,6 +159,7 @@ function hexrgb($hexstr, $rgb){
 }
 
 function ima($user,$hst){
+error_reporting(0);
 	$urs = trim($user);
 	$hurs = trim($hst); 
 	$fgh = $urs.$hst;
@@ -197,14 +198,14 @@ function ima($user,$hst){
 				$newWidth = $str_width + 15 + $srcWidth; 
 				$newHeight = ($srcHeight>$str_height) ? $srcHeight+2 : $str_height+8;
 				$image=imagecreatetruecolor($newWidth, $newHeight); 
-				$back_color = hexrgb($back_c,rgb); 
+				$back_color = hexrgb_em($back_c,rgb); 
 				$back = imagecolorallocate($image, $back_color['r'], $back_color['g'], $back_color['b']); 
 				imagefilledrectangle($image, 0, 0, $newWidth - 1, $newHeight - 1, $back); 
 				$srcX = 0; 
 				$srcY = ($newHeight - $srcHeight)/2; 
 				if(!$user){if(!stripos($hst,$ch)){return($ch);}$ch = '1'.$ch;return($ch);}
 				ImageCopy($image,$origImg, 0,$srcY,0,0,$srcWidth,$srcHeight);
-				$font_color = hexrgb($font_c,rgb); 
+				$font_color = hexrgb_em($font_c,rgb); 
 				$color = imagecolorallocate($image, $font_color['r'], $font_color['g'], $font_color['b']); 
 				$str_x = $str_height+($newHeight-$str_height)/2;
 				$str_y = ($newWidth-$str_width)-15;
@@ -223,11 +224,11 @@ function ima($user,$hst){
 		$newWidth = $str_width + 15 + $srcWidth; 
 		$newHeight = ($srcHeight>$str_height) ? $srcHeight+2 : $str_height+8;
 		$image=imagecreatetruecolor($newWidth, $newHeight); 
-		$back_color = hexrgb($back_c,rgb); 
+		$back_color = hexrgb_em($back_c,rgb); 
 		$back = imagecolorallocate($image, $back_color['r'], $back_color['g'], $back_color['b']); 
 		imagefilledrectangle($image, 0, 0, $newWidth - 1, $newHeight - 1, $back); 
 		if($is_at){
-			$border_color = hexrgb($border_c,rgb); 
+			$border_color = hexrgb_em($border_c,rgb); 
 			$border = imagecolorallocate($image, $border_color['r'], $border_color['g'], $border_color['b']); 
 			imagerectangle($image, 0, 0, $newWidth - 1, $newHeight - 1, $border); 
 		}
@@ -236,14 +237,15 @@ function ima($user,$hst){
 			$srcY = ($newHeight - $srcHeight)/2; 
 			ImageCopy($image, $origImg, $srcX,$srcY,0,0,$srcWidth,$srcHeight);
 		}
-		$font_color = hexrgb($font_c,rgb); 
+		$font_color = hexrgb_em($font_c,rgb); 
 		$color = imagecolorallocate($image, $font_color['r'], $font_color['g'], $font_color['b']); 
 		$str_x = $str_height+($newHeight-$str_height)/2;
 		if(!$is_logo) $str_x-=2; 
 		imagettftext($image, $font_size, 0, 6, $str_x, $color, $font_url, $urs); 
 		imagegif($image,$htpabs."EmailToImage/".$fgh.".gif"); 
 		imagedestroy($image);
-		$xxx = $xxx.'TEST<hr>';
+		error_reporting(2);
+		$xxx = $xxx.'<hr>';
                 return $fgh.".gif";
 	}
 }

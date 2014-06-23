@@ -1,10 +1,11 @@
 === Plugin Name ===
 Contributors: Arturo Emilio
-Donate link: http://anduriell.es/email2image
+Donate link: http://arturoemilio.es
 Tags: email image, email, spam, image, email spam
 Requires at least: 2.8
-Tested up to: 3.3.2
-Stable tag: 3.2
+Tested up to: 3.9.1
+Stable tag: 4.0
+Author URL: http://www.arturoemilio.es
 
 Avoid to get the email addresses in your blog to be indexed by spambots in a fancy and very efective way.
 
@@ -19,7 +20,7 @@ The page will not show the emails, not int the excerpt or comments, widgets, fee
 
 The names are encripted so it will be more dificult to recognice the emails. 
 
-If you like this plugin and have some sugestion or wish some new function just drop by my page and live a comment: [Comment about my plugin in my homepage](http://arturoemilio.es/2012/01/email-to-image/).
+If you like this plugin and have some sugestion or wish some new function just drop by my page and live a comment: [Comment about my plugin in my homepage](http://arturoemilio.es).
 If you found any bug or see any weird behavior in your blog, please use the wordpress forums, i check them regulary [Suport or Bugs Reports](http://wordpress.org/tags/email-2-image).
 
 
@@ -41,14 +42,17 @@ I've activated the plugin and i see the images but not the emails.. Why?
 
 = A question that someone might have =
 
-If you like this plugin and have some sugestion or wish some new function just drop by my page and live a comment: [Comment about my plugin in my homepage](http://arturoemilio.es/2012/01/email-to-image/).
-If you found any bug or see any weird behavior in your blog, please use the wordpress forums, i check them regulary [Suport or Bugs Reports](http://wordpress.org/tags/email-2-image).
+If you like this plugin and have some sugestion or wish some new function just drop by my page and live a comment: [Comment about my plugin in my homepage](http://arturoemilio.es/).
+If you found any bug or see any weird behavior in your blog, please use the wordpress forums, i check them regulary [Suport or Bugs Reports](http://wordpress.org).
 
 == Screenshots ==
 
-You may see the working plugin in my website [Comment about my plugin in my homepage](http://arturoemilio.es/2012/01/email-to-image/).
+You may see the working plugin in my website [Comment about my plugin in my homepage](http://arturoemilio.es).
 
 == Changelog ==
+= 4.0 =
+* Compatibility check for wordpress 3.9.1
+* Bugfixes.
 = 3.2 =
 *Fixed a bug where the plugin couldn't been configured.
 = 3.1 = 

@@ -4,7 +4,7 @@ Donate link: http://arturoemilio.es
 Tags: email image, email, spam, image, email spam
 Requires at least: 2.8
 Tested up to: 3.9.1
-Stable tag: 4.0
+Stable tag: 4.1
 Author URL: http://www.arturoemilio.es
 
 Avoid to get the email addresses in your blog to be indexed by spambots in a fancy and very efective way.
@@ -50,6 +50,8 @@ If you found any bug or see any weird behavior in your blog, please use the word
 You may see the working plugin in my website [Comment about my plugin in my homepage](http://arturoemilio.es).
 
 == Changelog ==
+= 4.1 =
+* Fixed fontsize when used a custom domain.
 = 4.0 =
 * Compatibility check for wordpress 3.9.1
 * Bugfixes.

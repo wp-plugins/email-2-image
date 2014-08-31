@@ -2,7 +2,7 @@
 /*
 Plugin Name: Email to Image
 Description: Protect your privacy from spambots using this very nice email addresses encripter. Only for the human eyes! <a href="http://arturoemilio.es/2012/01/email-to-image/"> New features please click HERE</a>
-Version: 4.0
+Version: 4.1
 License: GPL
 Author: Arturo Emilio 
 Author URI: http://arturoemilio.es
@@ -159,13 +159,13 @@ function hexrgb_em($hexstr, $rgb){
 }
 
 function ima($user,$hst){
-error_reporting(0);
+	error_reporting(0);
 	$urs = trim($user);
 	$hurs = trim($hst); 
 	$fgh = $urs.$hst;
 	$fgh = str_rot13($fgh);
 	$htpabs = ABSPATH . 'wp-content/';
-        if(!file_exists($htpabs ."/EmailToImage")){ 
+  if(!file_exists($htpabs ."/EmailToImage")){ 
 			mkdir($htpabs ."/EmailToImage");
 			$in = "<?php header('Location: http://arturoemilio.es/'); ?>";
 			file_put_contents($htpabs ."/EmailToImage/index.php", $in);
